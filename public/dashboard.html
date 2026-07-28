@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard · TaskFlow</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar" data-testid="topbar">
+    <span class="topbar__brand">TaskFlow</span>
+    <div class="topbar__right">
+      <span data-testid="welcome-message">Welcome, <strong id="welcome-username"></strong></span>
+      <button id="logout-btn" data-testid="logout-btn">Log out</button>
+    </div>
+  </header>
+
+  <main class="dashboard" data-testid="dashboard-page">
+    <section class="panel">
+      <h1 class="panel__title">Your Tasks</h1>
+
+      <form id="task-form" data-testid="task-form" class="task-form">
+        <input
+          type="text"
+          id="task-title-input"
+          data-testid="task-title-input"
+          placeholder="Add a new task..."
+          required
+        />
+        <select id="task-priority-input" data-testid="task-priority-input">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button type="submit" data-testid="task-add-btn">Add task</button>
+      </form>
+
+      <div class="task-controls">
+        <input
+          type="search"
+          id="task-search"
+          data-testid="task-search-input"
+          placeholder="Search tasks..."
+        />
+        <select id="task-filter" data-testid="task-filter-select">
+          <option value="all">All</option>
+          <option value="active">Active</option>
+          <option value="completed">Completed</option>
+        </select>
+        <span id="task-count" data-testid="task-count"></span>
+      </div>
+
+      <ul id="task-list" class="task-list" data-testid="task-list"></ul>
+
+      <p id="task-empty-state" class="empty-state" data-testid="task-empty-state" hidden>
+        No tasks found. Add one above to get started.
+      </p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    initDashboardPage();
+  </script>
+</body>
+</html>
